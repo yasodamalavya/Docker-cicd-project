@@ -20,7 +20,7 @@ services:
   backend:
     build:
       context: ./localsplit # Path to your backend directory
-      dockerfile: DockerFile
+      dockerfile: Dockerfile
     container_name: local_split_backend
     ports:
       - "8081:8081"
@@ -35,7 +35,7 @@ services:
   frontend:
     build:
       context: ./local-split-frontend # Path to your frontend directory
-      dockerfile: DockerFile
+      dockerfile: Dockerfile
     container_name: local_split_frontend
     ports:
       - "3000:80"
