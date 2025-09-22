@@ -55,10 +55,10 @@ jobs:
           
       - name: Build and Push Backend Docker Image
         run: |
-          docker build -t yasodamalavya/localsplit-backend:latest ./localsplit -f ./localsplit/Dockerfile
+          docker build -t yasodamalavya/localsplit-backend:latest ./localsplit
           docker push yasodamalavya/localsplit-backend:latest
           
       - name: Build and Push Frontend Docker Image
         run: |
-          docker build -t yasodamalavya/local-split-frontend:latest ./local-split-frontend -f ./local-split-frontend/Dockerfile
+          docker build -t yasodamalavya/local-split-frontend:latest ./local-split-frontend
           docker push yasodamalavya/local-split-frontend:latest
