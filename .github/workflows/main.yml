@@ -38,7 +38,10 @@ jobs:
         run: |
           cd local-split-frontend
           npm install
-
+      - name: Grant execute permissions to Vite
+        run: |
+          cd local-split-frontend
+          chmod +x node_modules/.bin/vite
       - name: Build frontend
         run: |
           cd local-split-frontend
