@@ -1,0 +1,256 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #eef2f5;
+  color: #333;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h1, h2 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 25px;
+  margin-bottom: 25px;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #2980b9;
+}
+
+.delete-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
+
+.section {
+  margin-top: 30px;
+}
+
+.flex-sections {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.section-card {
+  flex: 1;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e1e1e1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-header {
+  background-color: #f1f5f9;
+  padding: 15px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+  font-size: 18px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-header:hover {
+  background-color: #e2e6eb;
+}
+
+.dropdown-content {
+  padding-left: 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.dropdown-content.open {
+  max-height: 500px;
+}
+
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Scoped Styles for AddExpense page */
+.add-expense-container {
+  max-width: 1000px;
+  width: 95%;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.form-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap; /* Fix for smaller screens */
+}
+
+.form-columns > div {
+  flex: 1;
+}
+
+.add-expense-container .form-section {
+  background-color: #f9f9f9;
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid #e1e1e1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px; /* Add margin for mobile */
+}
+
+.add-expense-container .form-group {
+  margin-bottom: 20px;
+}
+
+.add-expense-container .form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+.add-expense-container .form-control {
+  width: 100%;
+  padding: 12px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: border-color 0.3s ease;
+  color: #333;
+}
+
+.add-expense-container .form-control:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.add-expense-container .checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.add-expense-container .checkbox-container input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+
+.add-expense-container .checkbox-container input[type="checkbox"]:checked {
+  border-color: #3498db;
+  background-color: #3498db;
+}
+
+.add-expense-container .checkbox-container input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+}
+
+.add-expense-container .payment-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.add-expense-container .payment-input {
+  flex: 1 1 45%;
+  min-width: 250px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+.group-section-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e1e1e1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+}
