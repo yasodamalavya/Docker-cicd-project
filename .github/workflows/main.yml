@@ -21,24 +21,24 @@ jobs:
 
       - name: Build and test backend
         run: |
-          cd backend
+          cd localsplit
           ./mvnw clean install -DskipTests
-
+          
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
-          cache-dependency-path: 'frontend/package-lock.json'
+          cache-dependency-path: 'local-split-frontend/package-lock.json'
 
       - name: Install frontend dependencies
         run: |
-          cd frontend
+          cd local-split-frontend
           npm install
 
       - name: Build frontend
         run: |
-          cd frontend
+          cd local-split-frontend
           npm run build
 
       - name: Login to Docker Hub
@@ -49,10 +49,10 @@ jobs:
           
       - name: Build and Push Backend Docker Image
         run: |
-          docker build -t your_dockerhub_username/local-split-backend:latest ./backend
-          docker push your_dockerhub_username/local-split-backend:latest
+          docker build -t yasodamalavya/localsplit-backend:latest ./localsplit
+          docker push yasodamalavya/localsplit-backend:latest
           
       - name: Build and Push Frontend Docker Image
         run: |
-          docker build -t your_dockerhub_username/local-split-frontend:latest ./frontend
-          docker push your_dockerhub_username/local-split-frontend:latest
+          docker build -t yasodamalavya/local-split-frontend:latest ./local-split-frontend
+          docker push yasodamalavya/local-split-frontend:latest
