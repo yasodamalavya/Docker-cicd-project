@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  # MySQL Database Service
+  db:
+    image: mysql:8.0
+    container_name: local_split_db
+    environment:
+      MYSQL_ROOT_PASSWORD: ymalavya123
+      MYSQL_DATABASE: local_split_db
+      MYSQL_USER: local_split_user
+      MYSQL_PASSWORD: ymalavya123
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      
+
+  # Spring Boot Backend Service
+  backend:
+    build:
+      context: ./localsplit # Path to your backend directory
+      dockerfile: DockerFile
+    container_name: local_split_backend
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/local_split_db?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: local_split_user
+      SPRING_DATASOURCE_PASSWORD: ymalavya123
+    depends_on:
+      - db
+
+  # React Frontend Service
+  frontend:
+    build:
+      context: ./local-split-frontend # Path to your frontend directory
+      dockerfile: DockerFile
+    container_name: local_split_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  db_data:

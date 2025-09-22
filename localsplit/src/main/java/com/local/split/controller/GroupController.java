@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/api/groups")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:3000")
 @Transactional
 public class GroupController {
 

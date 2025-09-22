@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/api/expenses")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ExpenseController {
 
     @Autowired
