@@ -18,7 +18,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-
+      - name: Grant execute permissions to mvnw
+        run: |
+          cd localsplit
+          chmod +x ./mvnw
       - name: Build and test backend
         run: |
           cd localsplit
