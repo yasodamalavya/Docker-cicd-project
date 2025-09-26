@@ -24,7 +24,7 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/local_split_db
       SPRING_DATASOURCE_USERNAME: local_split_user
-      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_PASSWORD: ymalavya123
     depends_on:
       - db
 
