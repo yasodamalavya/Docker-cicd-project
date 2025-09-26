@@ -11,26 +11,32 @@ services:
       MYSQL_USER: local_split_user
       MYSQL_PASSWORD: ymalavya123
     ports:
-      - "3307:3306"
+      - "3307:3306"   # External port optional
     volumes:
       - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      retries: 10
 
   # Spring Boot Backend Service
   backend:
-    image: yasodamalavya/localsplit-backend:latest   # use prebuilt image
+    image: yasodamalavya/localsplit-backend:latest
     container_name: local_split_backend
     ports:
       - "8081:8081"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/local_split_db
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/local_split_db?useSSL=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: local_split_user
       SPRING_DATASOURCE_PASSWORD: ymalavya123
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+    entrypoint: ["/bin/bash", "-c", "./wait-for-it.sh db:3306 -- java -jar app.jar"]
 
   # React Frontend Service
   frontend:
-    image: yasodamalavya/local-split-frontend:latest # use prebuilt image
+    image: yasodamalavya/local-split-frontend:latest
     container_name: local_split_frontend
     ports:
       - "3000:80"
