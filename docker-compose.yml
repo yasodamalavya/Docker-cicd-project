@@ -14,28 +14,23 @@ services:
       - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
-      
 
   # Spring Boot Backend Service
   backend:
-    build:
-      context: ./localsplit # Path to your backend directory
-      dockerfile: Dockerfile
+    image: yasodamalavya/localsplit-backend:latest   # use prebuilt image
     container_name: local_split_backend
     ports:
       - "8081:8081"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/local_split_db?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/local_split_db
       SPRING_DATASOURCE_USERNAME: local_split_user
-      SPRING_DATASOURCE_PASSWORD: ymalavya123
+      SPRING_DATASOURCE_PASSWORD: root
     depends_on:
       - db
 
   # React Frontend Service
   frontend:
-    build:
-      context: ./local-split-frontend # Path to your frontend directory
-      dockerfile: Dockerfile
+    image: yasodamalavya/local-split-frontend:latest # use prebuilt image
     container_name: local_split_frontend
     ports:
       - "3000:80"
